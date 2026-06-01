@@ -11,7 +11,11 @@ import kotlin.concurrent.write
 class ImageDecoder private constructor(
   private val nativePtr: Long,
   val width: Int,
-  val height: Int
+  val height: Int,
+  val originalWidth: Int,
+  val originalHeight: Int,
+  val cropX: Int,
+  val cropY: Int
 ) {
 
   var isRecycled = false

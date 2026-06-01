@@ -10,7 +10,8 @@
 void init_java_objects(JNIEnv* env);
 
 jobject create_image_decoder(JNIEnv* env, jlong decoderPtr, jint width,
-                             jint height);
+                             jint height, jint originalWidth,
+                             jint originalHeight, jint cropX, jint cropY);
 
 jobject create_bitmap(JNIEnv* env, jint width, jint height);
 

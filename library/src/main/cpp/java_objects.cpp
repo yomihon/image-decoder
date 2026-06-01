@@ -15,7 +15,7 @@ void init_java_objects(JNIEnv* env) {
 
   tmpCls = env->FindClass("tachiyomi/decoder/ImageDecoder");
   imageDecoderCls = (jclass)env->NewGlobalRef(tmpCls);
-  imageDecoderCtor = env->GetMethodID(imageDecoderCls, "<init>", "(JII)V");
+  imageDecoderCtor = env->GetMethodID(imageDecoderCls, "<init>", "(JIIIIII)V");
 
   tmpCls = env->FindClass("tachiyomi/decoder/ImageType");
   imageTypeCls = (jclass)env->NewGlobalRef(tmpCls);
@@ -28,9 +28,10 @@ void init_java_objects(JNIEnv* env) {
 }
 
 jobject create_image_decoder(JNIEnv* env, jlong decoderPtr, jint width,
-                             jint height) {
+                             jint height, jint originalWidth,
+                             jint originalHeight, jint cropX, jint cropY) {
   return env->NewObject(imageDecoderCls, imageDecoderCtor, decoderPtr, width,
-                        height);
+                        height, originalWidth, originalHeight, cropX, cropY);
 }
 
 jobject create_bitmap(JNIEnv* env, jint width, jint height) {
