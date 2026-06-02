@@ -60,7 +60,7 @@ ImageInfo JpegDecoder::parseInfo() {
         jpeg_read_scanlines(&jinfo, &offset, 1);
       }
       jpeg_finish_decompress(&jinfo);
-      bounds = findBorders(pixels.data(), imageWidth, imageHeight);
+      bounds = findBorders(pixels.data(), imageWidth, imageHeight, imageWidth);
     } catch (std::exception& ex) {
       LOGW("Couldn't crop borders on a JPEG image of size %dx%d", imageWidth,
            imageHeight);

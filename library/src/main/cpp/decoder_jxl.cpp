@@ -136,7 +136,7 @@ ImageInfo JpegxlDecoder::parseInfo() {
       }
     }
 
-    bounds = findBorders(gray_buffer, jxl_info.xsize, jxl_info.ysize);
+    bounds = findBorders(gray_buffer, jxl_info.xsize, jxl_info.ysize, jxl_info.xsize);
   } else {
     bounds = {
         .x = 0, .y = 0, .width = jxl_info.xsize, .height = jxl_info.ysize};

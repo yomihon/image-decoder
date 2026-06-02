@@ -29,7 +29,7 @@ ImageInfo WebpDecoder::parseInfo() {
     auto* luma = WebPDecodeYUV(stream->bytes, stream->size, &iw, &ih, &u, &v,
                                &stride, &uvStride);
     if (luma != nullptr) {
-      bounds = findBorders(luma, imageWidth, imageHeight);
+      bounds = findBorders(luma, imageWidth, imageHeight, stride);
       WebPFree(luma);
     } else {
       LOGW("Couldn't crop borders on a WebP image of size %dx%d", imageWidth,

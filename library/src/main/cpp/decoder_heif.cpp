@@ -38,9 +38,10 @@ ImageInfo HeifDecoder::parseInfo() {
     try {
       auto img =
           handle.decode_image(heif_colorspace_YCbCr, heif_chroma_undefined);
-      auto pixels = img.get_plane(heif_channel_Y, nullptr);
+      int stride;
+      auto pixels = img.get_plane(heif_channel_Y, &stride);
 
-      bounds = findBorders(pixels, imageWidth, imageHeight);
+      bounds = findBorders(pixels, imageWidth, imageHeight, stride);
     } catch (std::exception& ex) {
       LOGW("Couldn't crop borders on a HEIF/AVIF image of size %dx%d",
            imageWidth, imageHeight);

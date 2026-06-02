@@ -99,7 +99,7 @@ ImageInfo PngDecoder::parseInfo() {
           pixelsPos += imageWidth;
         }
       }
-      bounds = findBorders(pixels.get(), imageWidth, imageHeight);
+      bounds = findBorders(pixels.get(), imageWidth, imageHeight, imageWidth);
     } catch (std::bad_alloc& ex) {
       LOGW("Couldn't crop borders on a PNG image of size %dx%d", imageWidth,
            imageHeight);
